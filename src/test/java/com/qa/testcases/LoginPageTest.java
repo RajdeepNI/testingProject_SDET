@@ -29,6 +29,11 @@ public class LoginPageTest extends TestBase {
 		Assert.assertEquals(title,"Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!");
 	}
 	
+	@Test
+	public void SignUpPageTest() throws InterruptedException {
+		loginPage.validatePageSignUp();
+	}
+	
 	
 	@AfterMethod
 	public void tearDown() {

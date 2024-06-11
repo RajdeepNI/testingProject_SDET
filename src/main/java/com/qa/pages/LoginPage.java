@@ -11,6 +11,10 @@ public class LoginPage extends TestBase {
 	//PageFactory  - Object Repository
 	/*Locators*/
 	@FindBy(linkText = "Login")public WebElement loginBtn;
+	@FindBy(xpath="//a[@class='YLCOuy']//picture//img")public WebElement fKartLogo;
+	@FindBy(xpath = "//ul[@class='_3YjYK7 ecs1XG']//a[1]//span[2]")public WebElement signUp;
+	@FindBy(xpath = "//div[@class='ZJ3AS1']//a")public WebElement createAC;
+	
 	
 	
 	
@@ -26,12 +30,19 @@ public class LoginPage extends TestBase {
 		return driver.getTitle();
 	}
 	
+	public void validatePageSignUp() throws InterruptedException {
+		if(fKartLogo.isDisplayed()) {
+			loginBtn.click();
+			createAC.click();
+			Thread.sleep(1000);
+			
+			
+		}
+	}
+	
 	public void validatePageLogin() {
 		
 	}
 	
-	public void checkLoginDetails() {
-		
-	}
 	
 }
