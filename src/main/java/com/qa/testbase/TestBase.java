@@ -8,12 +8,24 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 
+import com.mailosaur.MailosaurClient;
+import com.mailosaur.MailosaurException;
+import com.mailosaur.models.Message;
+import com.mailosaur.models.MessageSearchParams;
+import com.mailosaur.models.SearchCriteria;
 import com.qa.utils.TestUtil;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
+	
+	//Author Rajdeep Gupta
 
+	public String KEY = TestUtil.API_KEY;
+	public String S_ID = TestUtil.SERVER_ID;
+	public String DOMAIN = TestUtil.SERVER_DOMAIN;
+	public String PASSWORD = TestUtil.PWD;
+	public String NAME = TestUtil.CUSTMAR_NAME;
 	public static WebDriver driver;
 	public static Properties prop;
 	
@@ -52,5 +64,20 @@ public class TestBase {
 		
 		String url = prop.getProperty("Url");
 		driver.get(url);
+	}
+	
+	public String emailIdGenerator() {
+		return "rajdeep."+System.currentTimeMillis()+"@"+DOMAIN;
+	}
+	
+	public String OTPfetching() throws IOException, MailosaurException {
+		MailosaurClient mailosaur = new MailosaurClient(KEY);
+		MessageSearchParams params = new MessageSearchParams();
+		params.withServer(S_ID);
+		SearchCriteria criteria = new SearchCriteria();
+		criteria.withSentTo("anything@"+DOMAIN);
+		Message msg = mailosaur.messages().get(params, criteria);
+		String mailSubject = msg.subject();
+		return mailSubject;
 	}
 }

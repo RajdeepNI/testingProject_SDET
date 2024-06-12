@@ -10,6 +10,10 @@ import com.qa.testbase.TestBase;
 
 public class LoginPageTest extends TestBase {
 	
+	
+	//Author Rajdeep Gupta
+	
+	
 	LoginPage loginPage;
 	
 	public LoginPageTest() {
@@ -26,7 +30,7 @@ public class LoginPageTest extends TestBase {
 	@Test
 	public void loginPageTitleTest() {
 		String title = loginPage.validatePageTitle();
-		Assert.assertEquals(title,"Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!");
+		Assert.assertEquals(title,"Online Shopping for Women, Men, Kids – Clothing, Footwear | AJIO");
 	}
 	
 	@Test
