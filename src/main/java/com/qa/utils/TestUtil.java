@@ -10,8 +10,9 @@ public class TestUtil {
 	public static String API_KEY = "QW5gGfUxvCtGkeI9yGpmhCE2O9fAcwR9";
 	public static String SERVER_ID = "2nkw65fg";
 	public static String SERVER_DOMAIN = "2nkw65fg.mailosaur.net";
+	public static String MAIL = "raj123456789";
 	
 	public static String CUSTMAR_NAME = "Rajdeep";
-	public static String PWD= "Project_Adidus@2024";
+	public static String PWD= "Project_Nike@2024";
 	
 }

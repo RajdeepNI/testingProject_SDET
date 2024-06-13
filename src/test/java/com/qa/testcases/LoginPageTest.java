@@ -27,15 +27,20 @@ public class LoginPageTest extends TestBase {
 			
 	}
 	
-	@Test
+	@Test(priority = 1)
 	public void loginPageTitleTest() {
 		String title = loginPage.validatePageTitle();
-		Assert.assertEquals(title,"Online Shopping for Women, Men, Kids – Clothing, Footwear | AJIO");
+		Assert.assertEquals(title,"Stock Screener and fundamental analysis tool for Indian stocks - Screener");
 	}
 	
-	@Test
+	@Test(priority = 2)
 	public void SignUpPageTest() throws InterruptedException {
 		loginPage.validatePageSignUp();
+	}
+	
+	@Test(priority = 3)
+	public void LoginpageTest() {
+		loginPage.validateLoginDetails();
 	}
 	
 	

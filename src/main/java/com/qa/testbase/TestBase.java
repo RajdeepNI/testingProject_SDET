@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.WebDriver;
 
 import com.mailosaur.MailosaurClient;
@@ -24,6 +25,7 @@ public class TestBase {
 	public String KEY = TestUtil.API_KEY;
 	public String S_ID = TestUtil.SERVER_ID;
 	public String DOMAIN = TestUtil.SERVER_DOMAIN;
+	public String EMAIL = TestUtil.MAIL;
 	public String PASSWORD = TestUtil.PWD;
 	public String NAME = TestUtil.CUSTMAR_NAME;
 	public static WebDriver driver;
@@ -70,14 +72,5 @@ public class TestBase {
 		return "rajdeep."+System.currentTimeMillis()+"@"+DOMAIN;
 	}
 	
-	public String OTPfetching() throws IOException, MailosaurException {
-		MailosaurClient mailosaur = new MailosaurClient(KEY);
-		MessageSearchParams params = new MessageSearchParams();
-		params.withServer(S_ID);
-		SearchCriteria criteria = new SearchCriteria();
-		criteria.withSentTo("anything@"+DOMAIN);
-		Message msg = mailosaur.messages().get(params, criteria);
-		String mailSubject = msg.subject();
-		return mailSubject;
-	}
+	
 }
