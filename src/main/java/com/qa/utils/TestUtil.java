@@ -7,12 +7,14 @@ public class TestUtil {
 	public static long PAGE_LOAD_TIMEOUT=20;
 	public static long IMPLICIT_WAIT = 10;
 	
-	public static String API_KEY = "QW5gGfUxvCtGkeI9yGpmhCE2O9fAcwR9";
+/*  public static String API_KEY = "QW5gGfUxvCtGkeI9yGpmhCE2O9fAcwR9";
 	public static String SERVER_ID = "2nkw65fg";
 	public static String SERVER_DOMAIN = "2nkw65fg.mailosaur.net";
 	public static String MAIL = "raj123456789";
 	
 	public static String CUSTMAR_NAME = "Rajdeep";
-	public static String PWD= "Project_Nike@2024";
 	
+	*/
+	public static String MAIL = "auto.testbyrajdeep@gmail.com";
+	public static String PWD= "Bx_4536@Cool";
 }

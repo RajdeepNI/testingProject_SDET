@@ -6,14 +6,8 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.WebDriver;
 
-import com.mailosaur.MailosaurClient;
-import com.mailosaur.MailosaurException;
-import com.mailosaur.models.Message;
-import com.mailosaur.models.MessageSearchParams;
-import com.mailosaur.models.SearchCriteria;
 import com.qa.utils.TestUtil;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -22,12 +16,6 @@ public class TestBase {
 	
 	//Author Rajdeep Gupta
 
-	public String KEY = TestUtil.API_KEY;
-	public String S_ID = TestUtil.SERVER_ID;
-	public String DOMAIN = TestUtil.SERVER_DOMAIN;
-	public String EMAIL = TestUtil.MAIL;
-	public String PASSWORD = TestUtil.PWD;
-	public String NAME = TestUtil.CUSTMAR_NAME;
 	public static WebDriver driver;
 	public static Properties prop;
 	
@@ -68,9 +56,7 @@ public class TestBase {
 		driver.get(url);
 	}
 	
-	public String emailIdGenerator() {
-		return "rajdeep."+System.currentTimeMillis()+"@"+DOMAIN;
-	}
+
 	
 	
 }
