@@ -1,6 +1,8 @@
 package com.qa.pages;
 
 
+import java.util.Currency;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -15,85 +17,64 @@ public class LoginPage extends TestBase {
 
 	//PageFactory  - Object Repository
 	/*Locators*/
-//	@FindBy(xpath="//*[@id=\'b2indexPage\']/div[40]/div/div/div/div[2]/div/a/span") public WebElement frontPopUp;
-//	@FindBy(xpath="//*[@id=\'b2indexPage\']/div[40]/div/div/div/div[1]/div[1]/div/button")public WebElement frontPopUpCross;
-	@FindBy(xpath="//nav[@class='Header_bar']/child::div[2]/child::a[2]/span[text()='Register']")public WebElement registration;
-	@FindBy(xpath="//nav[@class='Header_bar']/child::div[2]/child::div/a/span[contains(text(),'Sign in')]")public WebElement signIn;
-	@FindBy(xpath = "//div[@class='page-header']//child::h1[text()='Sign in or create an account']")public WebElement signInPage;
-	@FindBy(id="username") public WebElement emailTxtBox;
-	@FindBy(xpath = "//form[@class='nw-signin']//child::div[2]//child::div[2]//span[text()='Continue with email']")public WebElement loginBtn;
-	@FindBy(xpath="//div[@id='root']//child::div[@class='page-header']/h1[text()='Enter your password']")public WebElement pwdPage;
-	@FindBy(id="password")public WebElement pwdTxtBox;
-	@FindBy(xpath = "//form[@class='nw-signin']/div/div[2]/div")public WebElement signIN;
-	@FindBy(linkText = "Press and Hold") public WebElement pressHold;
-	
+
+	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button")public WebElement logInBtn;
+	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/h5")public WebElement loginPage;
+	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input") public WebElement userName;
+	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input")public WebElement pwd;
+	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[4]/p")public WebElement forgetPwd;
+	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[1]/header/div[1]/div[1]/span/h6")public WebElement dashBoard;
+
+	//======================================= Script
 
 	/*Automation Script*/
+
 	public LoginPage() {
 		// page factory initiation
 		PageFactory.initElements(driver,this);
-
+		
 	}
 
 
 	//Actions
 	public String validatePageTitle() {
-		return driver.getTitle();
-	}
-
-	/*public void validatePageSignUp() throws InterruptedException {
+		String title="";
 		try {
-			signUp.click();
 			Thread.sleep(1000);
-			if(signUpHeading.isDisplayed()) {
-				//String mail = EMAIL+"@"+DOMAIN;
-				String mail = emailIdGenerator();
-				mailTxtBox.sendKeys(mail);
-				remailTxtBox.sendKeys(mail);
-			    pwd.sendKeys(PASSWORD);
-			    signUpBtn.click();
-			    Thread.sleep(2000);
-			}
-			else System.out.println("User is on wrong page");
+			title = driver.getTitle();
 		}
-		catch(Exception e) {
+		catch (Exception e) {
+			// TODO: handle exception
 			e.printStackTrace();
 		}
+		return title;
 	}
-	 */
+
+
 	public void validateLoginDetails() {
 		try {
-			driver.navigate().refresh();
-			Thread.sleep(1000);
-			
-			
-			signIn.click();
-			Thread.sleep(1000);
-			if(signInPage.isDisplayed()) {
+			Thread.sleep(2000);
+			if(loginPage.isDisplayed()) {
+				System.out.println("Title of the page is "+driver.getTitle());
 				Thread.sleep(1000);
-				String mail = TestUtil.MAIL;
-				emailTxtBox.sendKeys(mail);
+				String uName = TestUtil.USER_NM;
+				userName.sendKeys(uName);
 				Thread.sleep(1000);
-				loginBtn.click();
+				String passWord = TestUtil.PWD;
+				pwd.sendKeys(passWord);
 				Thread.sleep(1000);
-				System.out.println(driver.getTitle());
-				if(pwdPage.isDisplayed()) {
-					Thread.sleep(1000);
-					pwdTxtBox.sendKeys(TestUtil.PWD);
-					Thread.sleep(1000);
-					Actions act = new Actions(driver);
-					act.clickAndHold(pressHold).build().perform();
-					signIN.click();
+				String loginURL = driver.getCurrentUrl();
+				logInBtn.click();
+				Thread.sleep(1000);
+				String newURL = driver.getCurrentUrl();
+				if(!loginURL.equals(newURL) && dashBoard.isDisplayed()) {
+					System.out.println("Login Successfull");
+					
 				}
-				else System.out.println("Sorry | Email id not registered !!");
-				
+				else System.out.println("Sorry | Login Unsuccessfull!!");
+				Thread.sleep(2000);
 			}
-			else System.out.println("Sorry | Not able to enter the login page !!");
-			Thread.sleep(1000);
-			String currURL = driver.getCurrentUrl();
-			System.out.println(currURL);
-			Thread.sleep(8000);
-			}
+			else System.out.println("Sorry | Login page is not displayed!!");
 
 		}
 		catch(Exception e) {

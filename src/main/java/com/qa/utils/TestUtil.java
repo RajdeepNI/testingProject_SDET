@@ -15,6 +15,6 @@ public class TestUtil {
 	public static String CUSTMAR_NAME = "Rajdeep";
 	
 	*/
-	public static String MAIL = "auto.testbyrajdeep@gmail.com";
-	public static String PWD= "Bx_4536@Cool";
+	public static String USER_NM = "Admin";
+	public static String PWD= "admin123";
 }
