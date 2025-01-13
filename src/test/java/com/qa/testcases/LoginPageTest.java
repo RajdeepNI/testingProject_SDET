@@ -5,6 +5,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.qa.pages.HomePage;
 import com.qa.pages.LoginPage;
 import com.qa.testbase.TestBase;
 
@@ -13,8 +14,8 @@ public class LoginPageTest extends TestBase {
 	
 	//Author Rajdeep Gupta
 	
-	
 	LoginPage loginPage;
+	HomePage homePage;
 	
 	public LoginPageTest() {
 		super();
@@ -34,8 +35,8 @@ public class LoginPageTest extends TestBase {
 	}
 	
 	@Test(priority = 2)
-	public void LoginpageTest() {
-		loginPage.validateLoginDetails();
+	public void LoginpageTest() throws InterruptedException {
+		homePage = loginPage.validateLoginDetails();
 	}
 	
 	

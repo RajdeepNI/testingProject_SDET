@@ -6,7 +6,7 @@
       <class name="com.qa.testcases.LoginPageTest">
         <methods>
           <include name="setUp"/>
-          <include name="loginPageTitleTest"/>
+          <include name="LoginpageTest"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.qa.testcases.LoginPageTest -->

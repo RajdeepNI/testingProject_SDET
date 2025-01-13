@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import com.qa.utils.TestUtil;
 
@@ -18,6 +20,11 @@ public class TestBase {
 
 	public static WebDriver driver;
 	public static Properties prop;
+	
+	public static void scrollDown(WebElement targetElement) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
+	}
 	
 	public TestBase(){
 		try {
