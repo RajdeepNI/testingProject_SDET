@@ -1,12 +1,16 @@
 package com.qa.testbase;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -15,16 +19,26 @@ import com.qa.utils.TestUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
-	
 	//Author Rajdeep Gupta
 
 	public static WebDriver driver;
 	public static Properties prop;
 	
+	
 	public static void scrollDown(WebElement targetElement) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
 	}
+	
+	public static void takeScreenShot(WebDriver driver,String targetPath) throws IOException {
+		TakesScreenshot scrShot = ((TakesScreenshot)driver);
+		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+		//Move image file to new destination
+		File DestFile=new File(targetPath);
+		//Copy file at destination
+		FileUtils.copyFile(SrcFile, DestFile);
+	}
+	
 	
 	public TestBase(){
 		try {
