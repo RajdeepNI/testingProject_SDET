@@ -17,4 +17,8 @@ public class TestUtil {
 	*/
 	public static String USER_NM = "Admin";
 	public static String PWD= "admin123";
+	
+	public static String Data_Homepg = "C:\\Users\\Acer\\Desktop\\SDET_Git\\test\\DataUtils\\Data_HomePage.xlsx";
+	public static String sh_Name = "Userid_pwd";
+	public static int passwordLength = 8;
 }
